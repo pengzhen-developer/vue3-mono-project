@@ -1,18 +1,8 @@
 <template>
-  <div class="flex items-center max-w-sm mx-auto mb-4">
-    <span class="">App</span>
-  </div>
-
-  <div class="flex items-center max-w-sm mx-auto">
-    <RouterLink class="underline mr-4" to="/">Home</RouterLink>
-    <RouterLink class="underline" to="/about">About</RouterLink>
-  </div>
-
-  <div class="flex items-center max-w-sm mx-auto">
-    <RouterView />
-  </div>
+  <ApplicationProvider> <RouterView></RouterView></ApplicationProvider>
 </template>
 
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script lang="ts" setup>
+import { RouterView } from 'vue-router'
+import { ApplicationProvider } from '@/components'
 </script>

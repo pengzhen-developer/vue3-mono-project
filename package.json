@@ -6,8 +6,15 @@
     "packages/*"
   ],
   "dependencies": {
+    "@vicons/antd": "^0.12.0",
+    "@vicons/ionicons5": "^0.12.0",
+    "@vueuse/core": "^7.6.2",
+    "axios": "^0.26.0",
+    "echarts": "^5.3.0",
+    "naive-ui": "^2.25.2",
     "pinia": "^2.0.11",
     "vue": "^3.2.29",
+    "vue-echarts": "^6.0.2",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
@@ -26,6 +33,7 @@
     "tailwindcss": "^3.0.22",
     "typescript": "~4.5.5",
     "vite": "^2.7.13",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^0.31.1"
   }
 }

@@ -1,14 +1,15 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+/**
+ * Boot files are your "main.ts"
+ **/
 
-import App from './App.vue'
-import router from './router'
+import createConfiguration from './boot/create-configuration'
+import createApp from './boot/create-app'
 
-import './assets/css/tailwind.css'
+import bootTailwind from './boot/boot-tailwind'
+import bootEcharts from './boot/boot-echarts'
 
-const app = createApp(App)
+const configuration = await createConfiguration()
+const app = await createApp()
 
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
+await bootEcharts(app, configuration)
+await bootTailwind(app, configuration)

@@ -4,8 +4,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "@src/*": ["./src/*"],
+      "@public/*": ["./public/*"]
+    },
+    "types": ["vite-plugin-svg-icons/client"]
   },
 
   "references": [
