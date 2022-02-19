@@ -13,8 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { NConfigProvider, NLoadingBarProvider, NDialogProvider, NNotificationProvider, NMessageProvider } from 'naive-ui'
-import { zhCN, dateZhCN } from 'naive-ui'
+import { NConfigProvider, NLoadingBarProvider, NDialogProvider, NNotificationProvider, NMessageProvider, zhCN, dateZhCN } from 'naive-ui'
 import { useTheme } from '@/store/theme'
 
 const themeStore = useTheme()

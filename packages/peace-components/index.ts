@@ -1,5 +1,4 @@
-import PeaceLayout from './peace-layout'
-import PeaceSvgIcon from './peace-svg-icon'
-import PeaceResponsiveForm from './peace-responsive-form'
-
-export { PeaceLayout, PeaceSvgIcon, PeaceResponsiveForm }
+export * from './peace-layout'
+export * from './peace-svg-icon'
+export * from './peace-responsive-form'
+export * from './peace-upload'

@@ -1,3 +1,2 @@
-import index from './src/index.vue'
-
-export default index
+import PeaceLayout from './src/PeaceLayout.vue'
+export { PeaceLayout }

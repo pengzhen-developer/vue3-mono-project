@@ -8,7 +8,6 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { NBreadcrumb, NBreadcrumbItem } from 'naive-ui'
 import { ApplicationDarkMode } from '@/components'
 
 const getRouteMatchedNames = () => {

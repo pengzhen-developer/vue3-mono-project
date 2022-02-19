@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col justify-center page-container">
     <div class="text-center">
-      <img src="./../assets/images/500.svg" alt="" />
+      <img src="./assets/images/403.svg" alt="" />
     </div>
     <div class="text-center">
-      <h1 class="text-base text-gray-500 mb-8">抱歉，服务器出错了</h1>
+      <h1 class="text-base text-gray-500 mb-8">抱歉，你无权访问该页面</h1>
       <div type="info" @click="goHome">回到首页</div>
     </div>
   </div>

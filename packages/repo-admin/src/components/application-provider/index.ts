@@ -1,3 +1,2 @@
-import index from './src/index.vue'
-
-export default index
+import ApplicationProvider from './src/ApplicationProvider.vue'
+export { ApplicationProvider }

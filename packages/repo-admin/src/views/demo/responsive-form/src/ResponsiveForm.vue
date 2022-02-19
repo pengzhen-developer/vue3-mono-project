@@ -38,6 +38,5 @@
 
 <script setup lang="ts">
 import { PeaceResponsiveForm } from 'peace-component'
-import { NForm, NFormItem, NSpace, NButton, NInput, NSelect, NIcon, NAlert } from 'naive-ui'
 import { DownOutlined, UpOutlined } from '@vicons/antd'
 </script>

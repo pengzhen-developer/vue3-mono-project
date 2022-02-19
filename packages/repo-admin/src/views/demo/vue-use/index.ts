@@ -1,3 +1,1 @@
-import index from './src/index.vue'
-
-export default index
+export { default } from './src/VueUse.vue'

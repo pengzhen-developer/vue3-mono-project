@@ -4,9 +4,14 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
-// support svg
+// Used to generate svg sprite map
 // https://github.com/vbenjs/vite-plugin-svg-icons
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+
+// On-demand components auto importing for Vue
+// https://github.com/antfu/unplugin-vue-components
+import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver, ArcoResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,6 +23,10 @@ export default defineConfig({
       iconDirs: [fileURLToPath(new URL('./src/assets/svg/', import.meta.url))],
       // Specify symbolId format
       symbolId: 'icon-[dir]-[name]'
+    }),
+    Components({
+      resolvers: [NaiveUiResolver(), ArcoResolver()],
+      dts: true
     })
   ],
   resolve: {

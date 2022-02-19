@@ -1,3 +1,2 @@
-import index from './src/index.vue'
-
-export default index
+import PeaceResponsiveForm from './src/PeaceResponsiveForm.vue'
+export { PeaceResponsiveForm }

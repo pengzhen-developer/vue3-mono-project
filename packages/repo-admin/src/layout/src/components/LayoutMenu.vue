@@ -17,20 +17,20 @@
 
 <script setup lang="tsx">
 import type { Ref } from 'vue'
+import type { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
-import { NMenu, NIcon } from 'naive-ui'
-import { useLayout } from '@/store/layout'
-import { arrayToTree } from 'peace-library'
+import { NIcon } from 'naive-ui'
 import { PeaceSvgIcon } from 'peace-component'
+import { arrayToTree } from 'peace-library'
+import { useLayout } from '@/store/layout'
 import { menus } from '@/mock/menu'
 
 const route = useRoute()
 const router = useRouter()
 const layoutStore = useLayout()
 const menuTree = arrayToTree(menus, { id: 'id', parentId: 'parentId' })
-const menuOptions: Array<MenuMixedOption> = []
+const menuOptions: MenuMixedOption[] = []
 const expandedKeys: Ref<Array<string>> = ref([])
 const value = ref()
 

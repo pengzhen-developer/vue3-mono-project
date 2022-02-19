@@ -64,13 +64,11 @@
 <script setup lang="tsx">
 import { MenuFoldOutlined, MenuUnfoldOutlined, FullscreenOutlined, FullscreenExitOutlined, UserOutlined, SettingOutlined } from '@vicons/antd'
 import { MoonOutline, SunnyOutline, ExitOutline } from '@vicons/ionicons5'
-import { ApplicationDarkMode } from '@/components'
 
 import { useLayout } from '@/store/layout'
 import { useTheme } from '@/store/theme'
-import { renderIcon } from '@/util/icon'
 import { useFullscreen } from '@vueuse/core'
-import { NButton, NIcon, NDropdown, NTooltip, NAvatar } from 'naive-ui'
+import { NIcon } from 'naive-ui'
 
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
 

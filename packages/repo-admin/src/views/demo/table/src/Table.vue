@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { NDataTable } from 'naive-ui'
 import { useTable } from 'peace-library'
 import { systemUser } from './service/index'
 

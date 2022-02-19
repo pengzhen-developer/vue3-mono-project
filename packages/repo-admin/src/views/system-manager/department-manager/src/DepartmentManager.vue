@@ -1,10 +1,14 @@
 <template>
   <NSpace vertical>
+    <NCard>
+      <PeaceUpload></PeaceUpload>
+    </NCard>
+
     <NCard content-style="padding-bottom: 0">
       <PeaceResponsiveForm>
-        <NForm inline label-placement="left" label-width="auto" @keyup.enter.prevent="loadData">
-          <NFormItem label="栏位"> <NInput v-model:value="model.id"></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect v-model:value="model.name"></NSelect> </NFormItem>
+        <NForm inline label-placement="left" label-width="auto">
+          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
+          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
           <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
           <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
           <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
@@ -35,66 +39,33 @@
     </NCard>
 
     <NCard>
-      <template #header>
-        <NSpace>
-          <NButton type="primary">新增</NButton>
-          <NButton>删除</NButton>
-        </NSpace>
-      </template>
       <NDataTable
+        :row-key="rowKey"
         :remote="true"
         :loading="loading"
         :columns="columns"
         :data="data"
-        :pagination="pagination"
         @update:sorter="handleSorterChange"
         @update:page="handlePageChange"
         @update:page-size="handlePageSizeChange"
-      ></NDataTable></NCard
-  ></NSpace>
+      ></NDataTable>
+    </NCard>
+  </NSpace>
 </template>
 
-<script setup lang="tsx">
-import { onMounted, reactive } from 'vue'
-import { NDataTable, NForm, NFormItem, NSpace, NButton, NInput, NSelect, NIcon, NCard, NImage } from 'naive-ui'
+<script setup lang="ts">
+import { onMounted, reactive, ref } from 'vue'
 import { DownOutlined, UpOutlined } from '@vicons/antd'
-import { PeaceResponsiveForm } from 'peace-component'
+import { PeaceResponsiveForm, PeaceUpload } from 'peace-component'
 import { useTable } from 'peace-library'
-import { systemUser } from './service/index'
+import { systemDepartment } from './service/index'
 
-const model = reactive({
-  id: '1',
-  name: '2'
-})
-const columns = reactive([
-  { title: 'id', key: 'id', sorter: true },
-  { title: 'name', key: 'name', sorter: true },
-  {
-    title: 'avatar',
-    key: 'avatar',
-    render: (rowData: object) => <NImage width="40" class="rounded-full" src={rowData.avatar}></NImage>
-  },
-  {
-    title: '操作',
-    key: 'action',
-    fixed: 'right',
-    width: 240,
-    render: (rowData: object) => (
-      <NSpace>
-        <NButton>操作1</NButton>
-        <NButton>操作1</NButton>
-        <NButton>操作1</NButton>
-      </NSpace>
-    )
-  }
-])
+const model = reactive({})
+const columns = [{ type: 'selection' }, { title: 'id', key: 'id' }, { title: 'name', key: 'name' }]
+const rowKey = (row) => row.id
+const current = ref(1)
 
-const { loading, data, pagination, reset, loadData, handlePageChange, handlePageSizeChange, handleSorterChange } = useTable({
-  fetch: systemUser,
-  params: model
-})
+const { loading, data, loadData, reset, handlePageChange, handlePageSizeChange, handleSorterChange } = useTable({ fetch: systemDepartment, params: model })
 
-onMounted(() => {
-  loadData()
-})
+onMounted(() => loadData())
 </script>

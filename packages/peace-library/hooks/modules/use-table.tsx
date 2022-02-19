@@ -39,7 +39,7 @@ export const useTable = ({ fetch, params }: any) => {
 
     fetch(searchParams)
       .then((source: any) => {
-        data.value = source.data.records
+        data.value = source.data.records || source.data
         pagination.itemCount = source.data.total
       })
       .finally(() => {

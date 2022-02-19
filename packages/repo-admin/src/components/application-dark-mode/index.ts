@@ -1,3 +1,2 @@
-import index from './src/index.vue'
-
-export default index
+import ApplicationDarkMode from './src/ApplicationDarkMode.vue'
+export { ApplicationDarkMode }

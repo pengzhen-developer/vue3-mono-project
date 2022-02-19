@@ -1,7 +1,7 @@
 import type { RouteRecordRaw, RouteComponent } from 'vue-router'
 import { menus } from '@/mock/menu'
 import { arrayToTree } from 'peace-library'
-import { ExceptionUnFinished } from '@/components/application-exception'
+import { ExceptionUnFinished } from '@/components'
 import { Layout, LayoutEmpty } from '@/layout'
 
 const modules = import.meta.glob('../views/**/*.ts')
