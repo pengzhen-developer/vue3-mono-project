@@ -1,7 +1,2 @@
-import { arrayToTree } from './array/arrayToTree'
-
-export { arrayToTree }
-
-export default {
-  arrayToTree
-}
+export * from './array'
+export * from './hooks'

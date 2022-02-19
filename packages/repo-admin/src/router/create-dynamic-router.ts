@@ -4,7 +4,7 @@ import { arrayToTree } from 'peace-library'
 import { ExceptionUnFinished } from '@/components/application-exception'
 import { Layout, LayoutEmpty } from '@/layout'
 
-const modules = import.meta.glob('../views/**/*.vue')
+const modules = import.meta.glob('../views/**/*.ts')
 const menuTree = arrayToTree(menus, { id: 'id', parentId: 'parentId' })
 
 /**
@@ -33,6 +33,7 @@ const createRoute = (menus: Array<any>, parentMenu?: any): Array<RouteRecordRaw>
         name: menu.routeName,
         path: parentMenu ? `/${parentMenu.routePath}/${menu.routePath}` : `/${menu.routePath}`,
         component: createRouteComponent(menu.componentPath),
+        meta: menu,
         children: createRoute(menu.children, menu)
       }
 
@@ -41,6 +42,7 @@ const createRoute = (menus: Array<any>, parentMenu?: any): Array<RouteRecordRaw>
       const route: RouteRecordRaw = {
         name: menu.routeName,
         path: parentMenu?.routePath ? `/${parentMenu.routePath}/${menu.routePath}` : `/${menu.routePath}`,
+        meta: menu,
         component: createRouteComponent(menu.componentPath)
       }
 

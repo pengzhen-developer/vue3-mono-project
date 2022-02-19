@@ -1,8 +1,13 @@
 import { defineStore } from 'pinia'
 
 export const useLayout = defineStore('layout', {
+  // 开启数据缓存
+  persist: {
+    enabled: true
+  },
+
   state: () => ({
-    minWidth: 800,
+    minWidth: 640,
     mode: 'vertical',
 
     fixedHeaderAndTab: true,

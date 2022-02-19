@@ -1,7 +1,5 @@
 <template>
-  <ApplicationDarkMode>
-    <div class="flex justify-center items-center h-full">Copyright ©2021 Company Name</div>
-  </ApplicationDarkMode>
+  <ApplicationDarkMode class="flex justify-center items-center h-full shadow-sm dark:shadow-gray-800"> Copyright ©2021 Company Name </ApplicationDarkMode>
 </template>
 
 <script setup lang="ts">

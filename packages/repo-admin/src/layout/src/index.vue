@@ -10,16 +10,17 @@
     :sider-collapsed-width="layoutStore.siderCollapsedWidth"
     :sider-collapse="layoutStore.siderCollapse"
   >
-    <template #header> <LayoutHeader class="h-full shadow-sm"></LayoutHeader> </template>
-    <template #tab> <LayoutTab class="h-full"></LayoutTab> </template>
-    <template #sider> <LayoutSider class="h-full shadow-md"></LayoutSider> </template>
+    <template #header> <LayoutHeader></LayoutHeader> </template>
+    <template #tab> <LayoutTab></LayoutTab> </template>
+    <template #sider> <LayoutSider></LayoutSider> </template>
     <template #default> <LayoutContent></LayoutContent> </template>
-    <template #footer> <LayoutFooter class="h-full"></LayoutFooter> </template>
+    <template #footer> <LayoutFooter></LayoutFooter> </template>
   </PeaceLayout>
 </template>
 
 <script lang="ts" setup>
 import { useResizeObserver } from '@vueuse/core'
+import { useTheme } from '@/store/theme'
 import { useLayout } from '@/store/layout'
 import { PeaceLayout } from 'peace-component'
 import LayoutSider from './components/LayoutSider.vue'
@@ -29,6 +30,9 @@ import LayoutTab from './components/LayoutTab.vue'
 import LayoutFooter from './components/LayoutFooter.vue'
 
 const layoutStore = useLayout()
+const themeStore = useTheme()
+
+themeStore.setTheme()
 
 useResizeObserver(window.document.body, (entries) => {
   const { width } = entries[0].contentRect

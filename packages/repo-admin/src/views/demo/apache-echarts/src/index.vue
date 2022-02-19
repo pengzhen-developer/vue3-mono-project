@@ -3,20 +3,19 @@
 </template>
 
 <script setup lang="ts">
-import VChart from 'vue-echarts'
+import { useTheme } from '@/store/theme'
+import { PieChart } from 'echarts/charts'
+import { LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
-import { PieChart } from 'echarts/charts'
-import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components'
 import { ref } from 'vue'
-import { useTheme } from '@/store/theme'
+import VChart from 'vue-echarts'
 
 use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
 
 const themeStore = useTheme()
 
 const option = ref({
-  darkMode: true,
   title: {
     text: 'Traffic Sources',
     left: 'center'

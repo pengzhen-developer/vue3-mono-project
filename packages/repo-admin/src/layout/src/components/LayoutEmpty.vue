@@ -1,8 +1,6 @@
 <template>
-  <ApplicationDarkMode class="h-full">
-    <div class="p-[16px] h-full bg-[#f6f9f8] dark:bg-[#101014] transition duration-300 ease-in-out overflow-hidden">
-      <RouterView></RouterView>
-    </div>
+  <ApplicationDarkMode class="h-full p-4 overflow-hidden shadow-sm dark:shadow-gray-800 dark:bg-neutral-900">
+    <RouterView></RouterView>
   </ApplicationDarkMode>
 </template>
 

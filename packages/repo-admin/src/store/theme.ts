@@ -2,15 +2,19 @@ import { defineStore } from 'pinia'
 import { darkTheme, lightTheme } from 'naive-ui'
 
 export const useTheme = defineStore('theme', {
+  // 开启数据缓存
+  persist: {
+    enabled: true
+  },
+
   state: () => ({
     /* system theme */
-    theme: 'lightTheme',
-    primaryColor: '#18a058',
+    theme: 'darkTheme',
 
     /* naive ui theme */
+    primaryColor: '#18A058'
 
     /* charts theme */
-    themeEcahrts: ''
   }),
 
   getters: {
@@ -34,13 +38,11 @@ export const useTheme = defineStore('theme', {
     },
 
     /* eCharts theme */
-    eChartsTheme: (state) => (state.theme === 'darkTheme' ? 'dark' : 'light')
+    eChartsTheme: (state) => (state.theme === 'darkTheme' ? 'chalk' : 'macarons')
   },
 
   actions: {
-    toggleTheme() {
-      this.theme = this.isLightTheme ? 'darkTheme' : 'lightTheme'
-
+    setTheme() {
       // 添加 dark class，以支持 tailwind 深色主题
       // https://tailwindcss.com/docs/dark-mode
       if (this.isLightTheme) {
@@ -50,6 +52,12 @@ export const useTheme = defineStore('theme', {
         document.documentElement.classList.add('dark')
         document.documentElement.classList.remove('light')
       }
+    },
+
+    toggleTheme() {
+      this.theme = this.isLightTheme ? 'darkTheme' : 'lightTheme'
+
+      this.setTheme()
     }
   }
 })

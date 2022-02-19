@@ -1,5 +1,5 @@
-import { ref, computed, watch, onUnmounted } from 'vue'
 import type { Ref, ComputedRef } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 
 /**
  * 使用了固定定位的布局元素添加translateX

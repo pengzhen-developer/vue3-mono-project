@@ -1,4 +1,3 @@
-import PeaceSvgIcon from './src/PeaceSvgIcon.vue'
+import index from './src/index.vue'
 
-export { PeaceSvgIcon }
-export default PeaceSvgIcon
+export default index
