@@ -8,8 +8,12 @@ import createApp from './boot/create-app'
 import bootTailwind from './boot/boot-tailwind'
 import bootEcharts from './boot/boot-echarts'
 
-const configuration = await createConfiguration()
-const app = await createApp()
+const install = async () => {
+  const configuration = await createConfiguration()
+  const app = await createApp()
 
-await bootEcharts(app, configuration)
-await bootTailwind(app, configuration)
+  await bootEcharts(app, configuration)
+  await bootTailwind(app, configuration)
+}
+
+install()

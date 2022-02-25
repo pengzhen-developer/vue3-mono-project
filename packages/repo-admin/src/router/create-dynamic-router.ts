@@ -1,8 +1,8 @@
 import type { RouteRecordRaw, RouteComponent } from 'vue-router'
-import { menus } from '@/mock/menu'
-import { arrayToTree } from 'peace-library'
 import { ExceptionUnFinished } from '@/components'
 import { Layout, LayoutEmpty } from '@/layout'
+import { arrayToTree } from 'peace-library'
+import { menus } from '@/mock/menu'
 
 const modules = import.meta.glob('../views/**/*.ts')
 const menuTree = arrayToTree(menus, { id: 'id', parentId: 'parentId' })

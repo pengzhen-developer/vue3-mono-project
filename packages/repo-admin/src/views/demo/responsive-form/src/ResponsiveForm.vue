@@ -18,17 +18,11 @@
         <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
       </NForm>
 
-      <template #suffix="{ collapsed, toggleCollapsed }">
-        <NFormItem label="">
+      <template #suffix>
+        <NFormItem>
           <NSpace>
             <NButton>Search</NButton>
             <NButton>Reset</NButton>
-            <NButton circle quaternary @click="toggleCollapsed">
-              <NIcon>
-                <DownOutlined v-if="collapsed"></DownOutlined>
-                <UpOutlined v-else></UpOutlined>
-              </NIcon>
-            </NButton>
           </NSpace>
         </NFormItem>
       </template>

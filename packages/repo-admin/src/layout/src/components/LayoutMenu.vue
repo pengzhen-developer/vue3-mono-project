@@ -11,8 +11,7 @@
     :options="menuOptions"
     :value="value"
     @update:value="handleUpdateValue"
-    @update-expanded-keys="handleExpandedKeys"
-  />
+    @update-expanded-keys="handleExpandedKeys" />
 </template>
 
 <script setup lang="tsx">

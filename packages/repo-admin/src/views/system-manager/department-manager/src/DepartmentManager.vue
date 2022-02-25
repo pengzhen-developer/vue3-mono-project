@@ -7,22 +7,46 @@
     <NCard content-style="padding-bottom: 0">
       <PeaceResponsiveForm>
         <NForm inline label-placement="left" label-width="auto">
-          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
-          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
-          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
-          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
-          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
-          <NFormItem label="栏位"> <NInput></NInput> </NFormItem>
-          <NFormItem label="栏位"> <NSelect></NSelect> </NFormItem>
+          <NFormItem label="栏位">
+            <NInput></NInput>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NSelect></NSelect>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NInput></NInput>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NSelect></NSelect>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NInput></NInput>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NSelect></NSelect>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NInput></NInput>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NSelect></NSelect>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NInput></NInput>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NSelect></NSelect>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NInput></NInput>
+          </NFormItem>
+          <NFormItem label="栏位">
+            <NSelect></NSelect>
+          </NFormItem>
         </NForm>
 
         <template #suffix="{ collapsed, toggleCollapsed }">
-          <NFormItem label="">
+          <NFormItem>
             <NSpace>
               <NButton type="primary" @click="loadData">Search</NButton>
               <NButton @click="reset">Reset</NButton>
@@ -54,6 +78,7 @@
 </template>
 
 <script setup lang="ts">
+import type { TableColumns } from 'naive-ui/lib/data-table/src/interface'
 import { onMounted, reactive, ref } from 'vue'
 import { DownOutlined, UpOutlined } from '@vicons/antd'
 import { PeaceResponsiveForm, PeaceUpload } from 'peace-component'
@@ -61,9 +86,8 @@ import { useTable } from 'peace-library'
 import { systemDepartment } from './service/index'
 
 const model = reactive({})
-const columns = [{ type: 'selection' }, { title: 'id', key: 'id' }, { title: 'name', key: 'name' }]
-const rowKey = (row) => row.id
-const current = ref(1)
+const columns: TableColumns<any> = [{ type: 'selection' }, { title: 'id', key: 'id' }, { title: 'name', key: 'name' }]
+const rowKey = (row: { id: string }) => row.id
 
 const { loading, data, loadData, reset, handlePageChange, handlePageSizeChange, handleSorterChange } = useTable({ fetch: systemDepartment, params: model })
 

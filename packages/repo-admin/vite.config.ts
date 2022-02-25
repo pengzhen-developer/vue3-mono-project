@@ -11,7 +11,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // On-demand components auto importing for Vue
 // https://github.com/antfu/unplugin-vue-components
 import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver, ArcoResolver } from 'unplugin-vue-components/resolvers'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,7 +25,7 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]'
     }),
     Components({
-      resolvers: [NaiveUiResolver(), ArcoResolver()],
+      resolvers: [NaiveUiResolver()],
       dts: true
     })
   ],

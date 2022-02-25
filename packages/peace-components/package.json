@@ -2,5 +2,8 @@
   "name": "peace-component",
   "main": "index.ts",
   "version": "1.0.0",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "peace-library": "^1.0.0"
+  }
 }

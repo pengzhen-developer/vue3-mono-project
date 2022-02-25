@@ -1,5 +1,7 @@
 <template>
-  <ApplicationProvider class="h-screen"> <RouterView></RouterView></ApplicationProvider>
+  <ApplicationProvider class="h-screen">
+    <RouterView></RouterView>
+  </ApplicationProvider>
 </template>
 
 <script lang="ts" setup>

@@ -1,5 +1,5 @@
 <template>
-  <ApplicationDarkMode class="h-full p-4 overflow-hidden dark:bg-neutral-900">
+  <ApplicationDarkMode class="h-full p-4 overflow-hidden bg-gray-100 dark:bg-neutral-900">
     <RouterView></RouterView>
   </ApplicationDarkMode>
 </template>

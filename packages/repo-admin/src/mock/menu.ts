@@ -167,5 +167,18 @@ export const menus = [
     sort: 1,
     visible: true,
     closable: true
+  },
+  {
+    id: '10006',
+    parentId: '10000',
+    menuName: 'Upload',
+    menuIcon: null,
+    routeName: 'upload',
+    routePath: 'upload',
+    componentName: null,
+    componentPath: 'views/demo/upload/index.ts',
+    sort: 1,
+    visible: true,
+    closable: true
   }
 ]

@@ -14,32 +14,33 @@ export const useTable = ({ fetch, params }: any) => {
     pageSizes: [10, 20, 30, 40, 50, 100],
     pageCount: 1,
     pageSlot: 7,
-    itemCount: undefined,
-    prefix: (PaginationInfo: PaginationInfo) => <div>共 {PaginationInfo.itemCount} 条</div>,
-    suffix: (PaginationInfo: PaginationInfo) => undefined
+    itemCount: NaN,
+    prefix: (PaginationInfo: PaginationInfo) => <div>共 {PaginationInfo.itemCount} 条</div>
   })
   const sorter = reactive({
     sorter: false,
     order: false,
-    columnKey: undefined
+    columnKey: ''
   })
   const defaultParams = reactive(cloneDeep(params))
 
-  const loadData = () => {
+  const loadData: () => Promise<any> = () => {
     loading.value = true
 
     const searchParams = {
       // 分页条件
-      pagination,
+      page: pagination.page,
+      rows: pagination.pageSize,
       // 排序条件
-      sorter,
+      order: sorter.order ? sorter.order : undefined,
+      orderBy: sorter.order ? sorter.columnKey : undefined,
       // 初始条件
-      params
+      ...params
     }
 
-    fetch(searchParams)
+    return fetch(searchParams)
       .then((source: any) => {
-        data.value = source.data.records || source.data
+        data.value = source.data.rows || source.data.records || source.data
         pagination.itemCount = source.data.total
       })
       .finally(() => {
@@ -75,7 +76,7 @@ export const useTable = ({ fetch, params }: any) => {
     loadData()
   }
 
-  const handleSorterChange = (sort: { sorter: boolean; order: boolean; columnKey: undefined }) => {
+  const handleSorterChange = (sort: { sorter: boolean; order: boolean; columnKey: string }) => {
     sorter.sorter = sort.sorter
     sorter.order = sort.order
     sorter.columnKey = sort.columnKey

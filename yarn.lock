@@ -16,27 +16,6 @@
   dependencies:
     "@types/throttle-debounce" "^2.1.0"
 
-"@arco-design/color@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@arco-design/color/-/color-0.4.0.tgz#52ddb40d318ee6df1057ca8c653cc1675023928f"
-  integrity sha512-s7p9MSwJgHeL8DwcATaXvWT3m2SigKpxx4JA1BGPHL4gfvaQsmQfrLBDpjOJFJuJ2jG2dMt3R3P8Pm9E65q18g==
-  dependencies:
-    color "^3.1.3"
-
-"@arco-design/web-vue@^2.18.0-beta.1":
-  version "2.18.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@arco-design/web-vue/-/web-vue-2.18.0-beta.1.tgz#bdce1101712962a77728ef14f77635a9bc86ea35"
-  integrity sha512-HHk8L84n0e4ZrPzb7tJGV6xoC/UJbq+wT2/6Y3ci69R55yGti3W1RCZLHN9DqiXo1/oGNaZP4xVWbqoKYL8tqQ==
-  dependencies:
-    "@arco-design/color" "^0.4.0"
-    b-tween "^0.3.3"
-    b-validate "^1.3.1"
-    compute-scroll-into-view "^1.0.17"
-    dayjs "^1.10.3"
-    number-precision "^1.5.0"
-    resize-observer-polyfill "^1.5.1"
-    scroll-into-view-if-needed "^2.2.28"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
