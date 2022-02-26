@@ -9,7 +9,7 @@ export const useTheme = defineStore('theme', {
 
   state: () => ({
     /* system theme */
-    theme: 'darkTheme',
+    theme: 'lightTheme',
 
     /* naive ui theme */
     primaryColor: '#18A058'

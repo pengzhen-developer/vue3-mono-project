@@ -71,8 +71,7 @@
         :data="data"
         @update:sorter="handleSorterChange"
         @update:page="handlePageChange"
-        @update:page-size="handlePageSizeChange"
-      ></NDataTable>
+        @update:page-size="handlePageSizeChange"></NDataTable>
     </NCard>
   </NSpace>
 </template>

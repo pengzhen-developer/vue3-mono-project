@@ -5,23 +5,23 @@
 ## Project Setup
 
 ```sh
-npm install
+yarn install
 ```
 
 ### 开发（为开发环境进行编译，并具有热更新特性）
 
 ```sh
-npm run dev
+yarn workspace repo-[project] dev
 ```
 
 ### 部署（为生产环境进行类型检查、编译与压缩）
 
 ```sh
-npm run build
+yarn workspace repo-[project] build
 ```
 
 ### 使用 [ESLint](https://eslint.org/) 进行代码检查
 
 ```sh
-npm run lint
+yarn workspace repo-[project] lint
 ```

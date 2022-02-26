@@ -48,7 +48,7 @@
         </NTooltip>
 
         <div class="flex px-4 h-full">
-          <NDropdown trigger="hover" :options="options">
+          <NDropdown trigger="hover" :options="options" @select="handleSelect">
             <NButton text>
               <NAvatar round size="small" src="https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93" />
 
@@ -62,18 +62,19 @@
 </template>
 
 <script setup lang="tsx">
+import { useRouter } from 'vue-router'
+import { NIcon } from 'naive-ui'
 import { MenuFoldOutlined, MenuUnfoldOutlined, FullscreenOutlined, FullscreenExitOutlined, UserOutlined, SettingOutlined } from '@vicons/antd'
 import { MoonOutline, SunnyOutline, ExitOutline } from '@vicons/ionicons5'
 
+import { useFullscreen } from '@vueuse/core'
 import { useLayout } from '@/store/layout'
 import { useTheme } from '@/store/theme'
-import { useFullscreen } from '@vueuse/core'
-import { NIcon } from 'naive-ui'
 
-const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
-
+const router = useRouter()
 const layoutStore = useLayout()
 const themeStore = useTheme()
+const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
 
 const options = [
   {
@@ -108,4 +109,10 @@ const options = [
     )
   }
 ]
+
+const handleSelect = (key: string) => {
+  if (key === '退出登录') {
+    router.push({ name: 'login' })
+  }
+}
 </script>
