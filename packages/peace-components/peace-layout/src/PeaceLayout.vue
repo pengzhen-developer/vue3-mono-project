@@ -1,7 +1,6 @@
 <template>
   <div class="peace-layout" :style="{ minWidth: minWidth + 'px' }">
     <PeaceLayoutHeader
-      id="123123"
       v-if="headerVisible"
       v-bind="commonProps"
       :fixed="fixedHeaderAndTab"
@@ -9,8 +8,7 @@
       :min-width="minWidth"
       :height="headerHeight"
       :padding-left="headerPaddingLeft"
-      :style="headerAndTabTransform"
-    >
+      :style="headerAndTabTransform">
       <slot name="header"></slot>
     </PeaceLayoutHeader>
     <PeaceLayoutTab
@@ -22,8 +20,7 @@
       :top="headerHeight"
       :height="tabHeight"
       :padding-left="siderWidth"
-      :style="headerAndTabTransform"
-    >
+      :style="headerAndTabTransform">
       <slot name="tab"></slot>
     </PeaceLayoutTab>
     <PeaceLayoutSider v-if="siderVisible" v-bind="commonProps" :z-index="siderZIndex" :width="siderWidth" :padding-top="siderPaddingTop">
@@ -40,8 +37,7 @@
       :min-width="minWidth"
       :height="footerHeight"
       :padding-left="siderWidth"
-      :style="footerTransform"
-    >
+      :style="footerTransform">
       <slot name="footer"></slot>
     </PeaceLayoutFooter>
   </div>
@@ -108,6 +104,7 @@ const props = withDefaults(defineProps<Props>(), {
   transitionDuration: 300,
   transitionTimingFunction: 'ease-in-out'
 })
+console.log(props)
 // fixed布局时，应用translateX样式(水平方向出现滚动条，拖动滚动条时，fixed元素跟着滚动)
 const hasFixedEl = computed(() => props.fixedHeaderAndTab || props.fixedFooter)
 const transformStyle = useFixedTransformStyle(hasFixedEl)

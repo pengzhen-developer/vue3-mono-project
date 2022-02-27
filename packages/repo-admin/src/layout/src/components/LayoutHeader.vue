@@ -1,25 +1,31 @@
 <template>
   <ApplicationDarkMode>
-    <div class="flex justify-between h-16 shadow-sm dark:shadow-gray-800">
-      <div class="flex px-4 h-full" id="1">
-        <NButton text @click="layoutStore.siderCollapse = !layoutStore.siderCollapse">
-          <NIcon size="24">
-            <template v-if="layoutStore.siderCollapse">
-              <MenuUnfoldOutlined></MenuUnfoldOutlined>
-            </template>
-            <template v-else>
-              <MenuFoldOutlined></MenuFoldOutlined>
-            </template>
-          </NIcon>
-        </NButton>
-      </div>
+    <div class="flex justify-between h-14 shadow-sm dark:shadow-gray-800">
+      <NTooltip>
+        <template #trigger>
+          <div class="flex px-4 h-full">
+            <NButton text @click="layoutStore.siderCollapse = !layoutStore.siderCollapse">
+              <NIcon size="20">
+                <template v-if="layoutStore.siderCollapse">
+                  <MenuUnfoldOutlined></MenuUnfoldOutlined>
+                </template>
+                <template v-else>
+                  <MenuFoldOutlined></MenuFoldOutlined>
+                </template>
+              </NIcon>
+            </NButton>
+          </div>
+        </template>
+
+        <span> {{ layoutStore.siderCollapse ? '展开' : '收缩' }}侧边栏</span>
+      </NTooltip>
 
       <div class="flex">
         <NTooltip>
           <template #trigger>
             <div class="flex px-4 h-full">
               <NButton text @click="toggleFullScreen">
-                <NIcon size="24">
+                <NIcon size="20">
                   <FullscreenExitOutlined v-if="isFullscreen" />
                   <FullscreenOutlined v-else />
                 </NIcon>
@@ -33,7 +39,7 @@
           <template #trigger>
             <div class="flex px-4 h-full">
               <NButton text @click="themeStore.toggleTheme">
-                <NIcon size="24">
+                <NIcon size="20">
                   <template v-if="themeStore.isLightTheme">
                     <SunnyOutline></SunnyOutline>
                   </template>
