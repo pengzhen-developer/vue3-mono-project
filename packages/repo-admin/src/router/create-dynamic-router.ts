@@ -5,6 +5,7 @@ import { arrayToTree } from 'peace-library'
 import { menus } from '@/mock/menu'
 
 const modules = import.meta.glob('../views/**/*.ts')
+
 const menuTree = arrayToTree(menus, { id: 'id', parentId: 'parentId' })
 
 /**
@@ -23,25 +24,25 @@ const createRouteComponent = (componentPath: string): RouteComponent => {
 /**
  * @description: 创建路由表
  * @param {Array} menus
- * @param {any} parentMenu
+ * @param {any} chainingPath
  * @return {*}
  */
-const createRoute = (menus: Array<any>, parentMenu?: any): Array<RouteRecordRaw> => {
+const createRoute = (menus: Array<any>, chainingPath?: any): Array<RouteRecordRaw> => {
   return menus.map((menu) => {
     if (Array.isArray(menu.children) && menu.children.length > 0) {
       const route: RouteRecordRaw = {
         name: menu.routeName,
-        path: parentMenu ? `/${parentMenu.routePath}/${menu.routePath}` : `/${menu.routePath}`,
+        path: chainingPath ? `/${chainingPath}/${menu.routePath}` : `/${menu.routePath}`,
         component: createRouteComponent(menu.componentPath),
         meta: menu,
-        children: createRoute(menu.children, menu)
+        children: createRoute(menu.children, chainingPath ? `${chainingPath}/${menu.routePath}` : `${menu.routePath}`)
       }
 
       return route
     } else {
       const route: RouteRecordRaw = {
         name: menu.routeName,
-        path: parentMenu?.routePath ? `/${parentMenu.routePath}/${menu.routePath}` : `/${menu.routePath}`,
+        path: chainingPath ? `/${chainingPath}/${menu.routePath}` : `/${menu.routePath}`,
         meta: menu,
         component: createRouteComponent(menu.componentPath)
       }

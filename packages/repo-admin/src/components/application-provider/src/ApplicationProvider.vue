@@ -4,7 +4,9 @@
       <NDialogProvider>
         <NNotificationProvider>
           <NMessageProvider>
-            <slot></slot>
+            <ApplicationGlobalProvider>
+              <slot></slot>
+            </ApplicationGlobalProvider>
           </NMessageProvider>
         </NNotificationProvider>
       </NDialogProvider>
@@ -13,8 +15,8 @@
 </template>
 
 <script lang="ts" setup>
-import { NConfigProvider, NLoadingBarProvider, NDialogProvider, NNotificationProvider, NMessageProvider, zhCN, dateZhCN } from 'naive-ui'
-import { useTheme } from '@/store/theme'
+import { zhCN, dateZhCN } from 'naive-ui'
+import { useThemeStore } from '@/store'
 
-const themeStore = useTheme()
+const themeStore = useThemeStore()
 </script>

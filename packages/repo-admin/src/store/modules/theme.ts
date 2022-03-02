@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { darkTheme, lightTheme } from 'naive-ui'
 
-export const useTheme = defineStore('theme', {
+export const useThemeStore = defineStore('theme', {
   // 开启数据缓存
   persist: {
     enabled: true
@@ -42,6 +42,10 @@ export const useTheme = defineStore('theme', {
   },
 
   actions: {
+    startup() {
+      this.setTheme()
+    },
+
     setTheme() {
       // 添加 dark class，以支持 tailwind 深色主题
       // https://tailwindcss.com/docs/dark-mode

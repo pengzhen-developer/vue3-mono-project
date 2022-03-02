@@ -6,8 +6,11 @@
 
 <script lang="ts" setup>
 import { RouterView } from 'vue-router'
-import { useTheme } from '@/store/theme'
+import { useUserStore, useThemeStore } from '@/store'
 
-const themeStore = useTheme()
-themeStore.setTheme()
+const userStore = useUserStore()
+const themeStore = useThemeStore()
+
+userStore.startup()
+themeStore.startup()
 </script>

@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { PeaceSvgIcon } from 'peace-component'
-import { useLayout } from '@/store/layout'
+import { useLayoutStore } from '@/store'
 
-const layoutStore = useLayout()
+const layoutStore = useLayoutStore()
 </script>

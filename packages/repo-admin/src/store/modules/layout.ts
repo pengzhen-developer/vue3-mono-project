@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useLayout = defineStore('layout', {
+export const useLayoutStore = defineStore('layout', {
   state: () => ({
     minWidth: 640,
     mode: 'vertical',

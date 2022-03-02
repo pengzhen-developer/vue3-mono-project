@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
 import { useResizeObserver } from '@vueuse/core'
-import { useLayout } from '@/store/layout'
+import { useLayoutStore } from '@/store'
 import { PeaceLayout } from 'peace-component'
 import LayoutSider from './components/LayoutSider.vue'
 import LayoutHeader from './components/LayoutHeader.vue'
@@ -27,7 +27,7 @@ import LayoutContent from './components/LayoutContent.vue'
 import LayoutTab from './components/LayoutTab.vue'
 import LayoutFooter from './components/LayoutFooter.vue'
 
-const layoutStore = useLayout()
+const layoutStore = useLayoutStore()
 
 useResizeObserver(window.document.body, (entries) => {
   const { width } = entries[0].contentRect

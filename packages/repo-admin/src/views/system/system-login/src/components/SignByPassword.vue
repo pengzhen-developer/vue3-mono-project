@@ -22,10 +22,13 @@
 
 <script setup lang="ts">
 import type { FormInst } from 'naive-ui'
+import { nextTick, ref } from 'vue'
 import { UserOutlined, LockOutlined } from '@vicons/antd'
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { signIn } from './../service'
+import { useUserStore } from '@/store'
 
+const userStore = useUserStore()
 const router = useRouter()
 const formRef = ref<FormInst | null>(null)
 
@@ -56,7 +59,17 @@ const login = (e: MouseEvent | KeyboardEvent) => {
   e.preventDefault()
 
   formRef.value?.validate().then(() => {
-    router.push({ name: 'dashbord' })
+    signIn().then((res) => {
+      userStore.setUserInfo(res.data)
+
+      router.replace({ name: 'dashbord' }).then(() => {
+        window.location.reload()
+      })
+
+      nextTick().then(() => {
+        // window.location.reload()
+      })
+    })
   })
 }
 </script>

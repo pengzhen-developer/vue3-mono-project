@@ -1,5 +1,6 @@
 <template>
   <NCard>
+    <NButton @click="alert"></NButton>
     <PeaceTable ref="table" :columns="columns" :fetch="fetch" :params="{}">
       <template #header>
         <NSpace>
@@ -19,6 +20,7 @@ import { PeaceTable } from 'peace-component'
 import { systemUser as fetch } from './service/index'
 
 const table = ref()
+
 const columns = ref<TableColumns<any>>([
   {
     type: 'selection',

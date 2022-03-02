@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTheme } from '@/store/theme'
+import { useThemeStore } from '@/store'
 import { PieChart } from 'echarts/charts'
 import { LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components'
 import { use } from 'echarts/core'
@@ -13,7 +13,7 @@ import VChart from 'vue-echarts'
 
 use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
 
-const themeStore = useTheme()
+const themeStore = useThemeStore()
 
 const option = ref({
   title: {

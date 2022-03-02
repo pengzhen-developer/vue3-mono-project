@@ -22,12 +22,12 @@ import { useRoute, useRouter } from 'vue-router'
 import { NIcon } from 'naive-ui'
 import { PeaceSvgIcon } from 'peace-component'
 import { arrayToTree } from 'peace-library'
-import { useLayout } from '@/store/layout'
+import { useLayoutStore } from '@/store'
 import { menus } from '@/mock/menu'
 
 const route = useRoute()
 const router = useRouter()
-const layoutStore = useLayout()
+const layoutStore = useLayoutStore()
 const menuTree = arrayToTree(menus, { id: 'id', parentId: 'parentId' })
 const menuOptions: MenuMixedOption[] = []
 const expandedKeys: Ref<Array<string>> = ref([])
@@ -47,7 +47,7 @@ watch(
   }
 )
 
-const f = (menuTree: any, menuOptions: Array<MenuMixedOption>) => {
+const menuTreeToMenuOptions = (menuTree: any, menuOptions: Array<MenuMixedOption>) => {
   menuTree.forEach((menu: any) => {
     if (menu.children?.length > 0) {
       const menuOption = {
@@ -67,7 +67,7 @@ const f = (menuTree: any, menuOptions: Array<MenuMixedOption>) => {
 
       menuOptions.push(menuOption)
 
-      f(menu.children, menuOption.children)
+      menuTreeToMenuOptions(menu.children, menuOption.children)
     } else {
       const menuOption = {
         menuName: menu.menuName,
@@ -88,7 +88,7 @@ const f = (menuTree: any, menuOptions: Array<MenuMixedOption>) => {
   })
 }
 
-f(menuTree, menuOptions)
+menuTreeToMenuOptions(menuTree, menuOptions)
 
 const handleUpdateValue = (key: string) => {
   router.push({ name: key })

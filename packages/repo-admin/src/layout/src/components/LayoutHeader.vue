@@ -74,12 +74,11 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, FullscreenOutlined, FullscreenExi
 import { MoonOutline, SunnyOutline, ExitOutline } from '@vicons/ionicons5'
 
 import { useFullscreen } from '@vueuse/core'
-import { useLayout } from '@/store/layout'
-import { useTheme } from '@/store/theme'
+import { useLayoutStore, useThemeStore } from '@/store'
 
 const router = useRouter()
-const layoutStore = useLayout()
-const themeStore = useTheme()
+const layoutStore = useLayoutStore()
+const themeStore = useThemeStore()
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen()
 
 const options = [
