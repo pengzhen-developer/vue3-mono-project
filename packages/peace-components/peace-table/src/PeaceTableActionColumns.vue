@@ -9,7 +9,7 @@
             </NButton>
           </template>
           <template #header>
-            <div>Header</div>
+            <div>显示列</div>
           </template>
           <div>
             <NCheckboxGroup v-model:value="checkedColumns" @update:value="onChangeColumn">
@@ -22,7 +22,7 @@
       </div>
     </template>
 
-    <span>配置</span>
+    <span>列配置</span>
   </NTooltip>
 </template>
 

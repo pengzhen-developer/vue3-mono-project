@@ -1,6 +1,6 @@
 <template>
   <div v-if="showAction" class="flex items-center justify-between mb-4">
-    <slot name="header"> </slot>
+    <div class="text-lg"><slot name="header"> </slot></div>
 
     <NSpace>
       <PeaceTableActionReload :loadData="loadData"></PeaceTableActionReload>
@@ -22,7 +22,7 @@
 
 <script setup lang="tsx">
 import type { PropType } from 'vue'
-import type { DataTableColumns } from 'naive-ui'
+import type { TableColumns } from 'naive-ui/lib/data-table/src/interface'
 import { computed } from 'vue'
 import { useTable } from 'peace-library'
 import { useTableStore } from './store/index'
@@ -34,7 +34,8 @@ const tableStore = useTableStore()
 
 const props = defineProps({
   showAction: { type: Boolean, default: () => true },
-  columns: Array as PropType<DataTableColumns<any>>,
+  columns: Array as PropType<TableColumns<any>>,
+  rowKey: Function as PropType<(rowData: object) => number | string>,
   fetch: Function as PropType<(...arg: any[]) => Promise<any>>,
   params: Object
 })

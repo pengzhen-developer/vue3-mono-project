@@ -36,7 +36,7 @@ export default defineComponent({
     const nGridItemSlot = defaultItemSlot.map((slot: VNode) => <NGridItem>{slot}</NGridItem>)
     // 响应式表单的展开收缩控制按钮
     const nGridOverflowSlot = (
-      <NButton circle quaternary onClick={this.toggleCollapsed}>
+      <NButton circle onClick={this.toggleCollapsed}>
         {<NIcon>{this.collapsed ? <DownOutlined></DownOutlined> : <UpOutlined></UpOutlined>}</NIcon>}
       </NButton>
     )
