@@ -1,2 +1,2 @@
-export * from './array'
-export * from './hooks'
+export * from './utils/index'
+export * from './hooks/index'
