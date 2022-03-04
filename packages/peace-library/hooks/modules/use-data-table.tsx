@@ -2,19 +2,19 @@ import type { PaginationInfo } from 'naive-ui'
 import { cloneDeep } from 'lodash'
 import { reactive, ref } from 'vue'
 
-export const useTable = ({ fetch, params }: any) => {
+export const useDataTable = ({ fetch, params }: any) => {
   const loading = ref(false)
   const data = ref([])
   const pagination: PaginationInfo = reactive({
-    startIndex: NaN,
-    endIndex: NaN,
+    startIndex: 0,
+    endIndex: 0,
     showSizePicker: true,
     page: 1,
     pageSize: 10,
     pageSizes: [10, 20, 30, 40, 50, 100],
     pageCount: 1,
     pageSlot: 7,
-    itemCount: NaN,
+    itemCount: 0,
     prefix: (PaginationInfo: PaginationInfo) => <div>共 {PaginationInfo.itemCount} 条</div>
   })
   const sorter = reactive({
@@ -24,7 +24,7 @@ export const useTable = ({ fetch, params }: any) => {
   })
   const defaultParams = reactive(cloneDeep(params))
 
-  const loadData: () => Promise<any> = () => {
+  const load: () => Promise<any> = () => {
     loading.value = true
 
     const searchParams = {
@@ -32,8 +32,8 @@ export const useTable = ({ fetch, params }: any) => {
       page: pagination.page,
       rows: pagination.pageSize,
       // 排序条件
-      order: sorter.order ? sorter.order : undefined,
-      orderBy: sorter.order ? sorter.columnKey : undefined,
+      sortOrder: sorter.order ? sorter.order : undefined,
+      sortBy: sorter.order ? sorter.columnKey : undefined,
       // 初始条件
       ...params
     }
@@ -48,10 +48,10 @@ export const useTable = ({ fetch, params }: any) => {
       })
   }
 
-  const reloadData = () => {
+  const reload = () => {
     pagination.page = 1
 
-    loadData()
+    return load()
   }
 
   const reset = () => {
@@ -61,19 +61,19 @@ export const useTable = ({ fetch, params }: any) => {
       }
     }
 
-    loadData()
+    return load()
   }
 
   const handlePageChange = (page: number): void => {
     pagination.page = page
 
-    loadData()
+    load()
   }
 
   const handlePageSizeChange = (pageSize: number): void => {
     pagination.pageSize = pageSize
 
-    loadData()
+    load()
   }
 
   const handleSorterChange = (sort: { sorter: boolean; order: boolean; columnKey: string }) => {
@@ -81,7 +81,7 @@ export const useTable = ({ fetch, params }: any) => {
     sorter.order = sort.order
     sorter.columnKey = sort.columnKey
 
-    loadData()
+    load()
   }
 
   return {
@@ -90,8 +90,8 @@ export const useTable = ({ fetch, params }: any) => {
     pagination,
 
     reset,
-    loadData,
-    reloadData,
+    load,
+    reload,
     handlePageChange,
     handlePageSizeChange,
     handleSorterChange
