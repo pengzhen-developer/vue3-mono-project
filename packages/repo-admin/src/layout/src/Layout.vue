@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import { useResizeObserver } from '@vueuse/core'
 import { useLayoutStore } from '@/store'
-import { PeaceLayout } from 'peace-component'
+import { PeaceLayout } from 'peace-components'
 import LayoutSider from './components/LayoutSider.vue'
 import LayoutHeader from './components/LayoutHeader.vue'
 import LayoutContent from './components/LayoutContent.vue'

@@ -20,7 +20,7 @@ import type { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { NIcon } from 'naive-ui'
-import { PeaceSvgIcon } from 'peace-component'
+import { PeaceSvgIcon } from 'peace-components'
 import { arrayToTree } from 'peace-library'
 import { useLayoutStore } from '@/store'
 import { menus } from '@/mock/menu'
@@ -28,7 +28,10 @@ import { menus } from '@/mock/menu'
 const route = useRoute()
 const router = useRouter()
 const layoutStore = useLayoutStore()
-const menuTree = arrayToTree(menus, { id: 'id', parentId: 'parentId' })
+const menuTree = arrayToTree(
+  menus.filter((menu) => menu.visible !== false),
+  { id: 'id', parentId: 'parentId' }
+)
 const menuOptions: MenuMixedOption[] = []
 const expandedKeys: Ref<Array<string>> = ref([])
 const value = ref()

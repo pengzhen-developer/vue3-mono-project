@@ -1,15 +1,19 @@
 {
   "name": "repo-admin",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build:test": "vue-tsc --noEmit && vite build --mode test",
+    "build:staging": "vue-tsc --noEmit && vite build --mode staging",
+    "build:prod": "vue-tsc --noEmit && vite build --mode prod",
+    "build": "vue-tsc --noEmit && vite build --mode prod",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "peace-component": "^1.0.0",
+    "peace-components": "^1.0.0",
     "peace-library": "^1.0.0"
   }
 }

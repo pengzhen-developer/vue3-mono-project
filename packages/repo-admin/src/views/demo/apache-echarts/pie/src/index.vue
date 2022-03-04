@@ -3,19 +3,20 @@
 </template>
 
 <script setup lang="ts">
-import { useThemeStore } from '@/store'
+import type { ECBasicOption } from 'echarts/types/dist/shared'
+import { ref } from 'vue'
+import VChart from 'vue-echarts'
 import { PieChart } from 'echarts/charts'
 import { LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
-import { ref } from 'vue'
-import VChart from 'vue-echarts'
+import { useThemeStore } from '@/store'
 
 use([CanvasRenderer, PieChart, TitleComponent, TooltipComponent, LegendComponent])
 
 const themeStore = useThemeStore()
 
-const option = ref({
+const option = ref<ECBasicOption>({
   title: {
     text: 'Traffic Sources',
     left: 'center'

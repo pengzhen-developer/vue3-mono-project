@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { PeaceSvgIcon } from 'peace-component'
+import { PeaceSvgIcon } from 'peace-components'
 import { useLayoutStore } from '@/store'
 
 const layoutStore = useLayoutStore()
