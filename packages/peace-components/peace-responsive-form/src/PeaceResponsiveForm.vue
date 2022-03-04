@@ -1,7 +1,7 @@
 <script lang="tsx">
 import type { VNode } from 'vue'
 import { ref, defineComponent } from 'vue'
-import { NButton, NFormItem, NGrid, NGridItem, NIcon, NSpace } from 'naive-ui'
+import { NButton, NFormItem, NGrid, NGridItem, NIcon, NSpace, NTooltip } from 'naive-ui'
 import { DownOutlined, UpOutlined } from '@vicons/antd'
 import { useResizeObserver } from '@vueuse/core'
 
@@ -33,12 +33,23 @@ export default defineComponent({
     const defaultItemSlot: any = defaultSlot?.[0]?.children?.default?.()
 
     // 使用 <NGridItem></NGridItem> 包裹组件
-    const nGridItemSlot = defaultItemSlot.map((slot: VNode) => <NGridItem>{slot}</NGridItem>)
+    const nGridItemSlot = defaultItemSlot?.map((slot: VNode) => <NGridItem>{slot}</NGridItem>)
     // 响应式表单的展开收缩控制按钮
     const nGridOverflowSlot = (
-      <NButton circle onClick={this.toggleCollapsed}>
-        {<NIcon>{this.collapsed ? <DownOutlined></DownOutlined> : <UpOutlined></UpOutlined>}</NIcon>}
-      </NButton>
+      <NTooltip>
+        {{
+          trigger: () => {
+            return (
+              <NButton circle onClick={this.toggleCollapsed}>
+                {<NIcon>{this.collapsed ? <DownOutlined></DownOutlined> : <UpOutlined></UpOutlined>}</NIcon>}
+              </NButton>
+            )
+          },
+          default: () => {
+            return <div>{this.collapsed ? '展开' : '收缩'}</div>
+          }
+        }}
+      </NTooltip>
     )
     // 根据 collapsed 和 overflow， 判断是否显示控制按钮
     // Passing Slots
@@ -62,7 +73,7 @@ export default defineComponent({
 
     // 覆盖默认插槽内容
     defaultSlot[0].children.default = () => [
-      <NGrid responsive="screen" cols="2 m:3 l:4" collapsed={this?.collapsed} collapsed-rows={1} x-gap={16}>
+      <NGrid responsive="screen" cols="2  m:3 l:4 xl:5" collapsed={this?.collapsed} collapsed-rows={1} x-gap={16}>
         {nGridItemSlot}
         {nGridItemSuffixSlot}
       </NGrid>

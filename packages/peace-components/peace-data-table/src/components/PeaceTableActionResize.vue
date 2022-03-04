@@ -2,7 +2,7 @@
   <NTooltip trigger="hover">
     <template #trigger>
       <div>
-        <NDropdown trigger="click" placement="bottom-end" :show-arrow="true" :options="options" @select="onSelect">
+        <NDropdown trigger="click" placement="bottom-end" :show-arrow="true" :options="options" @select="handleSelect">
           <NButton circle>
             <NIcon><ColumnHeightOutlined></ColumnHeightOutlined></NIcon>
           </NButton>
@@ -15,18 +15,24 @@
 </template>
 
 <script setup lang="ts">
-import { NTooltip, NIcon } from 'naive-ui'
+import type { PropType } from 'vue'
 import { ColumnHeightOutlined } from '@vicons/antd'
-import { useTableStore } from './store/index'
 
-const tableStore = useTableStore()
+type TSize = 'small' | 'medium' | 'large' | undefined
+
+const props = defineProps({
+  size: String as PropType<TSize>
+})
+
+const emit = defineEmits(['update:size'])
 
 const options = [
   { label: '紧凑', key: 'small' },
   { label: '适中', key: 'medium' },
   { label: '宽松', key: 'large' }
 ]
-const onSelect = (size: 'small' | 'medium' | 'large') => {
-  tableStore.size = size
+
+const handleSelect = (size: 'small' | 'medium' | 'large') => {
+  emit('update:size', size)
 }
 </script>

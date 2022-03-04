@@ -12,7 +12,7 @@
             <div>显示列</div>
           </template>
           <div>
-            <NCheckboxGroup v-model:value="checkedColumns" @update:value="onChangeColumn">
+            <NCheckboxGroup v-model:value="checkedColumns" @update:value="handleChangeColumn">
               <NSpace vertical>
                 <NCheckbox v-for="column in filterColumns" :value="column.key" :label="column.title" />
               </NSpace>
@@ -32,20 +32,19 @@ import type { DataTableColumns } from 'naive-ui'
 import { ref } from 'vue'
 import { SettingOutlined } from '@vicons/antd'
 import { cloneDeep } from 'lodash'
-import { useTableStore } from './store/index'
-
-const tableStore = useTableStore()
 
 const props = defineProps({
   columns: Array as PropType<DataTableColumns<any>>
 })
+const emit = defineEmits(['update:columns'])
 
-const cloneColumns: any = cloneDeep(props.columns)
-const filterColumns: any = cloneColumns.filter((item: any) => item.type !== 'selection')
+const cloneColumns = cloneDeep<any>(props.columns)
+const filterColumns = cloneColumns.filter((item: any) => item.type !== 'selection')
 const checkedColumns = ref(cloneColumns.map((item: any) => item.key))
-const onChangeColumn = (item: any) => {
+
+const handleChangeColumn = (item: any) => {
   const columns = cloneColumns.filter((column: any) => item.includes(column.key))
 
-  tableStore.setColumns(columns)
+  emit('update:columns', columns)
 }
 </script>
